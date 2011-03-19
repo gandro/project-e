@@ -5,7 +5,7 @@ class eConfig {
 	private static $settings;
 
 	public static function init() {
-		self::$settings = require(RESSOURCE_DIR . '/config.php');
+		self::$settings = require(INCLUDES_DIR . '/config.php');
 	}
 
 	public static function get($key) {

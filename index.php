@@ -1,15 +1,15 @@
 <?php
-require_once('resources/init.php');
+require_once('includes/init.php');
 
 switch(eAction::getAction()) {
 	case 'index':
 		eTemplating::create();
 		break;
-		
+
 	case 'upload':
-		
+
 		$fileID = substr(md5(uniqid()), 0, 8);
-	
+
 		$upload = new fUpload();
 		$upload->setMIMETypes(
 		    eConfig::get('Upload.Whitelist'),
@@ -27,13 +27,12 @@ switch(eAction::getAction()) {
 
 		$dir = fDirectory::create(FILES_DIR . '/' . $fileID);
 		$file = $upload->move($dir, 'file');
-	
+
 		$url = fURL::getDomain() . fFilesystem::translateToWebPath(
 			    FILES_DIR . '/' . $fileID . '/' . $file->getName());
 		$size = $file->getSize(true, 2);
-	
+
 		$view->set('url', $url);
 		$view->set('filesize', $size);
 		break;
 }
-

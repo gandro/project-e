@@ -10,8 +10,9 @@ if (!defined('__DIR__')) {
 define('DOCUMENT_ROOT', realpath(__DIR__ . '/..'));
 
 define('TEMPLATE_DIR', DOCUMENT_ROOT . '/templates');
-define('RESSOURCE_DIR', DOCUMENT_ROOT . '/resources');
-define('FILES_DIR', DOCUMENT_ROOT . '/files');
+define('INCLUDES_DIR', DOCUMENT_ROOT . '/includes');
+define('FILES_DIR',    DOCUMENT_ROOT . '/files');
+define('STATIC_DIR',   DOCUMENT_ROOT . '/static');
 
 eConfig::init();
 
@@ -24,13 +25,13 @@ eConfig::init();
  * @return void
  */
 function __autoload($class) {
-	$file = RESSOURCE_DIR . '/library/flourish/' . $class . '.php';
+	$file = INCLUDES_DIR . '/library/flourish/' . $class . '.php';
 
 	if (file_exists($file)) {
 		return require $file;
 	}
 
-	$file = RESSOURCE_DIR . '/classes/' . $class . '.php';
+	$file = INCLUDES_DIR . '/classes/' . $class . '.php';
 
 	if (file_exists($file)) {
 		return require $file;

@@ -1,10 +1,10 @@
 <?php
 
 class eTemplating {
-    
+
     public static function create($content = 'index.php') {
 		fHTML::sendHeader();
-		
+
         $template = new fTemplating(TEMPLATE_DIR);
 		$template->buffer();
 
@@ -13,8 +13,8 @@ class eTemplating {
 		$template->set('footer', 'footer.php');
 
 		$template->set('title', eConfig::get('HTML.Title'));
-		
-		$template->add('css', 'css/default.css');
+
+		$template->add('css', 'static/css/default.css');
 
 		$template->place('header');
 		$template->place('content');
